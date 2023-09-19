@@ -6,6 +6,7 @@ dotenv.config();
 import './src/database';
 
 import express from 'express';
+import delay from 'express-delay';
 import cors from 'cors';
 import homeRoutes from './src/routes/homeRoutes';
 import alunoRoutes from './src/routes/alunoRoutes';
@@ -22,6 +23,7 @@ class App {
 
   middlewares() {
     this.app.use(cors());
+    this.app.use(delay(2000));
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
     this.app.use(express.static(resolve(__dirname, 'uploads')));
